@@ -5,7 +5,7 @@ log = logging.getLogger("AuthService")
 
 def login(con, username, password):
     try:
-        fila = consultar(con, "SELECT password FROM users WHERE lower(username) = lower(?)", (username,))
+        fila = consultar(con, "SELECT password FROM users WHERE username = ?", (username,))
     except Exception as e:
         log.error("Error validating user token: %s", e)
         return 401, "Error: credenciales no válidas. Inténtelo nuevamente."
