@@ -28,3 +28,6 @@ def consultar(con, sql, params=()):
         raise QueryTimeout('Timeout while querying table "users"')
     finally:
         con.set_progress_handler(None, 0)
+
+def crear_indice(con):
+    con.execute("CREATE INDEX IF NOT EXISTS idx_users_username ON users(username)")
